@@ -1,0 +1,221 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'Nombre'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'Ubicacion'
+annotate view ZC_RAP_MOLINO_17 with
+{
+  @UI.facet: [ {
+    label: 'Ficha técnica del aerogenerador', 
+    id: 'FichaTecnica', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @EndUserText.label: 'MolinoID'
+ // @UI.identification: [ {
+  //  position: 10 , 
+ //   label: 'MolinoID'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 10 , 
+//    label: 'MolinoID'
+//  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  MolinoID;
+  
+  
+
+
+  
+  @EndUserText.label: 'Nombre'
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'Aerogenerador'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'Nombre'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+ 
+  Nombre;
+  
+  @EndUserText.label: 'Fabricante'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'Fabricante'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Fabricante'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  Fabricante;
+  
+  @UI.lineItem: [ { position: 50, label: 'Modelo' } ]
+  @UI.identification: [ { position: 30, label: 'Modelo' } ]
+  @UI.textArrangement: #TEXT_ONLY
+  Modelo;
+  
+  
+  @EndUserText.label: 'Ubicacion'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Ubicacion'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Ubicacion'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  Ubicacion;
+  
+  @EndUserText.label: 'PotenciaKw'
+//  @UI.identification: [ {
+//    position: 50 , 
+//    label: 'PotenciaKw'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 60 , 
+//    label: 'PotenciaKw'
+//  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  
+   @UI.lineItem: [ 
+    { position: 50, label: 'Potencia (kW)' },
+    { type: #FOR_ACTION, dataAction: 'duplicarPotencia', label: 'Duplicar Potencia (x2)' }
+  ]
+  @UI.identification: [ { position: 05, label: 'Potencia (kW)' } ,
+  { type: #FOR_ACTION, dataAction: 'duplicarPotencia', label: 'Duplicar Potencia (x2)' }]
+  PotenciaKw;
+  
+  @EndUserText.label: 'AlturaM'
+//  @UI.identification: [ {
+//    position: 60 , 
+//    label: 'AlturaM'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 70 , 
+//    label: 'AlturaM'
+//  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  AlturaM;
+  
+ @UI.identification: [ { position: 70, label: 'Fecha de Instalacion' } ]
+  @UI.selectionField: [ { position: 80 } ]
+  FechaInst;
+  
+  @EndUserText.label: 'Estado'
+  @UI.identification: [ {
+    position: 80 , 
+    label: 'Estado'
+      },
+     { type: #FOR_ACTION, dataAction: 'reactivarMolino', label: 'Reactivar Molino' } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'Estado'
+  } , { type: #FOR_ACTION, dataAction: 'reactivarMolino', label: 'Reactivar Molino' }
+  ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  @UI.textArrangement: #TEXT_ONLY
+  Estado;
+  
+  @EndUserText.label: 'Responsable'
+  @UI.identification: [ {
+    position: 90 , 
+    label: 'Responsable'
+  } ]
+  @UI.lineItem: [ {
+    position: 100 , 
+    label: 'Responsable'
+  } ]
+  @UI.selectionField: [ {
+    position: 90 
+  } ]
+  Responsable;
+  
+  
+  @EndUserText.label: 'Observaciones'
+//  @UI.identification: [ {
+//    position: 100 , 
+//    label: 'Observaciones'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 120 , 
+//    label: 'Observaciones'
+//  } ]
+  @UI.selectionField: [ {
+    position: 120 
+  } ]
+  Observaciones;
+  
+//  @UI.identification: [ {
+//    position: 130 
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 130 
+//  } ]
+  @UI.selectionField: [ {
+    position: 130 
+  } ]
+  LocalCreatedBy;
+  
+ // @UI.identification: [ {
+  //  position: 140 
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 140 
+//  } ]
+  @UI.selectionField: [ {
+    position: 140 
+  } ]
+  LocalCreatedAt;
+  
+//  @UI.identification: [ {
+//    position: 150 
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 150 
+//  } ]
+  @UI.selectionField: [ {
+    position: 150 
+  } ]
+  LocalLastChangedBy;
+  
+//  @UI.identification: [ {
+//    position: 160 
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 160 
+//  } ]
+  @UI.selectionField: [ {
+    position: 160 
+  } ]
+  LocalLastChangedAt;
+  
+//  @UI.identification: [ {
+//    position: 170 
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 170 
+//  } ]
+  @UI.selectionField: [ {
+    position: 170 
+  } ]
+  LastChangedAt;
+}

@@ -1,0 +1,48 @@
+managed implementation in class ZBP_R_RAP_PRODUC_17 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_RAP_PRODUC_17 alias ZrRapProduc17
+persistent table ZRAP_PRODUC_17
+extensible
+draft table ZRAP_PRODUC_17_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   ProductoID,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   ProductoID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZRAP_PRODUC_17 corresponding extensible
+  {
+    ProductoID = PRODUCTO_ID;
+    Nombre = NOMBRE;
+    Descripcion = DESCRIPCION;
+    Stock = STOCK;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}

@@ -1,0 +1,5 @@
+@EndUserText.label: 'Servicio OData V4 para Gestión de Lotes'
+define service ZUI_PHARMA_LOT_O4 {
+  expose ZC_PHARMA_LOT as PharmaLot;
+  expose ZC_PHARMA_LOG as TelemetryLog;
+}

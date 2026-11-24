@@ -1,0 +1,92 @@
+managed implementation in class ZBP_R_RAP_MOLINO_17 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_RAP_MOLINO_17 alias ZrRapMolino17
+persistent table ZRAP_MOLINO_17
+extensible
+draft table ZRAP_MOLINO_17_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   MolinoID,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   MolinoID;
+
+
+  create;
+  update;
+  delete;
+
+  field ( mandatory ) Nombre, Fabricante;
+
+ validation validarPotencia on save { field PotenciaKw; create; update; }
+  validation validarFechaInst on save { field FechaInst; create; update; }
+
+  validation validarObligatorios on save { field Nombre, Fabricante; create; update; }
+
+
+determine action checkFecha { validation validarFechaInst; }
+
+determination setEstadoInicial on modify { create; }
+
+
+determination setEstadoActivo on save { create; field Estado; }
+
+determination setResponsableInicial on modify { create; }
+
+action duplicarPotencia result [1] $self;
+
+
+action reactivarMolino result [1] $self;
+
+  side effects {
+    determine action checkFecha executed on field FechaInst affects messages;
+  }
+
+
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+
+  draft determine action Prepare
+  {
+    validation validarPotencia;
+    validation validarFechaInst;
+    validation validarObligatorios;
+  }
+
+  mapping for ZRAP_MOLINO_17 corresponding extensible
+  {
+    MolinoID = MOLINO_ID;
+    Nombre = NOMBRE;
+    Fabricante = FABRICANTE;
+    Modelo = MODELO;
+    Ubicacion = UBICACION;
+    PotenciaKw = POTENCIA_KW;
+    AlturaM = ALTURA_M;
+    FechaInst = FECHA_INST;
+    Estado = ESTADO;
+    Responsable = RESPONSABLE;
+    CodigoInterno = CODIGO_INTERNO;
+    Observaciones = OBSERVACIONES;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+
+
+}

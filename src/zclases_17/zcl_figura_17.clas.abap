@@ -1,0 +1,23 @@
+CLASS zcl_figura_17 DEFINITION
+  PUBLIC
+
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+
+  TYPES ty_medida TYPE p LENGTH 8 DECIMALS 2.
+
+  METHODS calcular_area
+       RETURNING VALUE(rv_area) TYPE ty_medida.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zcl_figura_17 IMPLEMENTATION.
+
+   METHOD calcular_area.
+    rv_area = 0.
+  ENDMETHOD.
+ENDCLASS.

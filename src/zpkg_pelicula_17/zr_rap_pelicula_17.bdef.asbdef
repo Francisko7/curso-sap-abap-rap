@@ -1,0 +1,50 @@
+managed implementation in class ZBP_R_RAP_PELICULA_17 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_RAP_PELICULA_17 alias ZrRapPelicula17
+persistent table ZRAP_PELICULA_17
+extensible
+draft table ZRAP_PLCULA_17_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   IdPelicula,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   IdPelicula;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZRAP_PELICULA_17 corresponding extensible
+  {
+    IdPelicula = ID_PELICULA;
+    Titulo = TITULO;
+    Director = DIRECTOR;
+    Anio = ANIO;
+    Genero = GENERO;
+    Clasificacion = CLASIFICACION;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DOMA" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD01V>
+    <DOMNAME>ZDO_MODELO_M_17</DOMNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DATATYPE>CHAR</DATATYPE>
+    <LENG>000040</LENG>
+    <OUTPUTLEN>000040</OUTPUTLEN>
+    <VALEXI>X</VALEXI>
+    <DDTEXT>Modelo de aerogenerador</DDTEXT>
+    <DOMMASTER>E</DOMMASTER>
+   </DD01V>
+   <DD07V_TAB>
+    <DD07V>
+     <DOMNAME>ZDO_MODELO_M_17</DOMNAME>
+     <VALPOS>0001</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>0V150</DOMVALUE_L>
+     <DDTEXT>Vestas V150 (4.2 MW)</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZDO_MODELO_M_17</DOMNAME>
+     <VALPOS>0002</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>SG145</DOMVALUE_L>
+     <DDTEXT>Siemens Gamesa SG 5.0-145</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZDO_MODELO_M_17</DOMNAME>
+     <VALPOS>0003</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>N163</DOMVALUE_L>
+     <DDTEXT>Nordex N163 (5.X)</DDTEXT>
+    </DD07V>
+   </DD07V_TAB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

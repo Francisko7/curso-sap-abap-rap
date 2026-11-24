@@ -1,0 +1,215 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'Matricula'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'Modelo'
+annotate view ZC_AUTO_VEH_17 with
+{
+  @UI.facet: [
+    {
+      id:              'SecIdentificacion',
+      purpose:         #STANDARD,
+      type:            #IDENTIFICATION_REFERENCE,
+      label:           'Identificación',
+      position:        10
+    },
+    {
+      id:              'SecTecnica',
+      purpose:         #STANDARD,
+      type:            #FIELDGROUP_REFERENCE,
+      targetQualifier: 'GrupoTecnico',
+      label:           'Características Técnicas',
+      position:        20
+    },
+    {
+      id:              'SecComercial',
+      purpose:         #STANDARD,
+      type:            #FIELDGROUP_REFERENCE,
+      targetQualifier: 'GrupoComercial',
+      label:           'Información Comercial',
+      position:        30
+    }
+  ]
+  @UI.hidden: true
+//  @EndUserText.label: 'VehiculoUUID'
+//  @UI.identification: [ {
+//    position: 10 , 
+//    label: 'VehiculoUUID'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 10 , 
+//    label: 'VehiculoUUID'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 10 
+//  } ]
+  VehiculoUUID;
+  
+  @EndUserText.label: 'Matricula'
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'Matricula'
+  },
+    { type: #FOR_ACTION, dataAction: 'DuplicarPrecio',   label: 'Duplicar Precio',   position: 1 },
+    { type: #FOR_ACTION, dataAction: 'AplicarDescuento', label: 'Descuento 10%',     position: 2 },
+    { type: #FOR_ACTION, dataAction: 'ReservarVehiculo', label: 'Reservar',          position: 3 },
+    { type: #FOR_ACTION, dataAction: 'CancelarReserva',  label: 'Cancelar Reserva',  position: 4 },
+    { type: #FOR_ACTION, dataAction: 'VenderVehiculo',   label: 'Registrar Venta',   position: 5 }
+   ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'Matricula'
+  },{ type: #FOR_ACTION, dataAction: 'DuplicarPrecio',   label: 'Duplicar Precio', position: 1 },
+    { type: #FOR_ACTION, dataAction: 'AplicarDescuento', label: 'Descuento 10%',   position: 2 } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  Matricula;
+  
+  @EndUserText.label: 'Bastidor'
+  @UI.identification: [ {
+    position: 25 , 
+    label: 'Número de Bastidor'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'Bastidor'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  Bastidor;
+  
+  @EndUserText.label: 'Marca'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Marca'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'Marca'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  Marca;
+  
+  @EndUserText.label: 'Modelo'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Modelo'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'Modelo'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  Modelo;
+  
+  
+  
+  // SECCIÓN 2: CARACTERÍSTICAS TÉCNICAS 
+ 
+  @EndUserText.label: 'Año de Fabricación' 
+  @UI.lineItem: [ { position: 40, label: 'Año' } ]
+  @UI.fieldGroup: [ { qualifier: 'GrupoTecnico', position: 10, label: 'Año de Fabricación' } ]
+  AnioFabricacion;
+  
+  @EndUserText.label: 'Kilometraje'
+  @UI.lineItem: [ { position: 50, label: 'Kilómetros' } ]
+  @UI.fieldGroup: [ { qualifier: 'GrupoTecnico', position: 20, label: 'Kilometraje' } ]
+  Kilometros;
+  
+  @EndUserText.label: 'Combustible'
+  @UI.lineItem: [ { position: 60, label: 'Combustible' } ]
+  @UI.selectionField: [ { position: 30 } ]
+  @UI.fieldGroup: [ { qualifier: 'GrupoTecnico', position: 30, label: 'Combustible (GA, DI, HI, EL)' } ]
+  Combustible;
+
+  @EndUserText.label: 'Potencia (CV)'
+  @UI.fieldGroup: [ { qualifier: 'GrupoTecnico', position: 40, label: 'Potencia (CV)' } ]
+  PotenciaCv;
+  
+  
+  
+  // SECCIÓN 3: INFORMACIÓN COMERCIAL 
+
+
+  @EndUserText.label: 'Precio'  
+  @UI.lineItem: [ { position: 70, label: 'Precio' } ]
+  @UI.fieldGroup: [ { qualifier: 'GrupoComercial', position: 10, label: 'Precio' } ]
+  Precio;
+
+
+  @EndUserText.label: 'Moneda'
+  @UI.fieldGroup: [ { qualifier: 'GrupoComercial', position: 20, label: 'Moneda' } ]
+  Moneda;
+
+
+  @EndUserText.label: 'Estado'
+  @UI.lineItem: [ { position: 80, label: 'Estado' } ]
+  @UI.selectionField: [ { position: 40 } ]
+  @UI.fieldGroup: [ { qualifier: 'GrupoComercial', position: 30, label: 'Estado Comercial (D, R, V)' } ]
+  Estado;
+  
+  
+ 
+  
+ 
+  @UI.identification: [ {
+    position: 120 
+  } ]
+  @UI.lineItem: [ {
+    position: 120 
+  } ]
+  @UI.selectionField: [ {
+    position: 120 
+  } ]
+  LocalCreatedBy;
+  
+  @UI.identification: [ {
+    position: 130 
+  } ]
+  @UI.lineItem: [ {
+    position: 130 
+  } ]
+  @UI.selectionField: [ {
+    position: 130 
+  } ]
+  LocalCreatedAt;
+  
+  @UI.identification: [ {
+    position: 140 
+  } ]
+  @UI.lineItem: [ {
+    position: 140 
+  } ]
+  @UI.selectionField: [ {
+    position: 140 
+  } ]
+  LocalLastChangedBy;
+  
+  @UI.identification: [ {
+    position: 150 
+  } ]
+  @UI.lineItem: [ {
+    position: 150 
+  } ]
+  @UI.selectionField: [ {
+    position: 150 
+  } ]
+  LocalLastChangedAt;
+  
+  @UI.identification: [ {
+    position: 160 
+  } ]
+  @UI.lineItem: [ {
+    position: 160 
+  } ]
+  @UI.selectionField: [ {
+    position: 160 
+  } ]
+  LastChangedAt;
+}

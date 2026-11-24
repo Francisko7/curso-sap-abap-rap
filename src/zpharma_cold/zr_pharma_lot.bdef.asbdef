@@ -1,0 +1,69 @@
+managed implementation in class zbp_r_pharma_lot unique;
+strict ( 2 );
+with draft;
+
+/* ===== ENTIDAD RAÍZ: LOTES ===== */
+define behavior for ZR_PHARMA_LOT alias PharmaLot
+persistent table zpharma_lot_h
+draft table zpharma_lot_d
+lock master
+total etag LastChangedAt
+authorization master ( instance )
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  association _TelemetryLogs { create; }
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for zpharma_lot_h
+  {
+    LotUuid            = lot_uuid;
+    LotId              = lot_id;
+    MedicationName     = medication_name;
+    MinTemp            = min_temp;
+    MaxTemp            = max_temp;
+    TempUnit           = temp_unit;
+    Status             = status;
+    CreatedBy          = created_by;
+    CreatedAt          = created_at;
+    LastChangedBy      = last_changed_by;
+    LastChangedAt      = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}
+
+/* ===== ENTIDAD HIJA: LECTURAS ===== */
+define behavior for ZR_PHARMA_LOG alias TelemetryLog
+persistent table zpharma_log_i
+draft table zpharma_log_d
+lock dependent by _PharmaLot
+authorization dependent by _PharmaLot
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  field ( readonly : update ) LotUuid; /* <--- ESTA ES LA LÍNEA MÁGICA */
+
+  association _PharmaLot { with draft; }
+
+  mapping for zpharma_log_i
+  {
+    LogUuid            = log_uuid;
+    LotUuid            = lot_uuid;
+    SensorId           = sensor_id;
+    RecordedTemp       = recorded_temp;
+    TempUnit           = temp_unit;
+    RecordedAt         = recorded_at;
+    LocationGps        = location_gps;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}

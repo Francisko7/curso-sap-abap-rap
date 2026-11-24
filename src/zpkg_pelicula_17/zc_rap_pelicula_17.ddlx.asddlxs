@@ -1,0 +1,147 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'IdPelicula'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'IdPelicula'
+annotate view ZC_RAP_PELICULA_17 with
+{
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @EndUserText.label: 'IdPelicula'
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'IdPelicula'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'IdPelicula'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  IdPelicula;
+  
+  @EndUserText.label: 'Titulo'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'Titulo'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'Titulo'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  Titulo;
+  
+  @EndUserText.label: 'Director'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Director'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'Director'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  Director;
+  
+  @EndUserText.label: 'Anio'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Anio'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Anio'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  Anio;
+  
+  @UI.identification: [ {
+    position: 50 
+  } ]
+  @UI.lineItem: [ {
+    position: 50 
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  Genero;
+  
+  @UI.identification: [ {
+    position: 60 
+  } ]
+  @UI.lineItem: [ {
+    position: 60 
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  Clasificacion;
+  
+  @UI.identification: [ {
+    position: 70 
+  } ]
+  @UI.lineItem: [ {
+    position: 70 
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  LocalCreatedBy;
+  
+  @UI.identification: [ {
+    position: 80 
+  } ]
+  @UI.lineItem: [ {
+    position: 80 
+  } ]
+  @UI.selectionField: [ {
+    position: 80 
+  } ]
+  LocalCreatedAt;
+  
+  @UI.identification: [ {
+    position: 90 
+  } ]
+  @UI.lineItem: [ {
+    position: 90 
+  } ]
+  @UI.selectionField: [ {
+    position: 90 
+  } ]
+  LocalLastChangedBy;
+  
+  @UI.identification: [ {
+    position: 100 
+  } ]
+  @UI.lineItem: [ {
+    position: 100 
+  } ]
+  @UI.selectionField: [ {
+    position: 100 
+  } ]
+  LocalLastChangedAt;
+  
+  @UI.identification: [ {
+    position: 110 
+  } ]
+  @UI.lineItem: [ {
+    position: 110 
+  } ]
+  @UI.selectionField: [ {
+    position: 110 
+  } ]
+  LastChangedAt;
+}

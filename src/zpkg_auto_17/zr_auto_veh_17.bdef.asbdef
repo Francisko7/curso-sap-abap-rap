@@ -1,0 +1,117 @@
+managed implementation in class ZBP_R_AUTO_VEH_17 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_AUTO_VEH_17 alias ZrAutoVeh17
+persistent table ZAUTO_VEH_17
+extensible
+draft table ZAUTO_VEH_17_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   Estado,
+   VehiculoUUID,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   VehiculoUUID;
+
+   // 3. Inmutables
+  field ( readonly : update, mandatory : create )
+    Matricula,
+    Bastidor;
+
+   // 4. Campos obligatorios
+  field ( mandatory )
+    Marca,
+    Modelo,
+    AnioFabricacion,
+    Combustible,
+    PotenciaCv,
+    Precio;
+
+   field ( mandatory )
+    Kilometros;
+
+   // Determinaciones
+   determination setDatosIniciales on modify { create; }
+
+
+   // validaciones on save
+   validation validarDatosObligatorios on save { field Marca, Modelo; create; update; }
+  validation validarMatricula         on save { field Matricula; create; }
+  validation validarBastidor          on save { field Bastidor; create; }
+  validation validarAnioFabricacion   on save { field AnioFabricacion; create; update; }
+  validation validarKilometros        on save { field Kilometros; create; update; }
+  validation validarPotencia          on save { field PotenciaCv; create; update; }
+  validation validarPrecio            on save { field Precio; create; update; }
+  validation validarCombustible       on save { field Combustible; create; update; }
+  validation validarEstadoModificacion on save { create; update; }
+
+  // Acción que fuerza la ejecución de la validación en caliente
+  determine action checkKilometros { validation validarKilometros; }
+
+  // Side Effect: al modificar Kilometros se ejecuta checkKilometros y refresca los mensajes
+  side effects {
+    determine action checkKilometros executed on field Kilometros affects messages;
+  }
+
+  create;
+  update;
+  delete;
+
+
+
+  // --- ACCIONES PERSONALIZADAS
+  action DuplicarPrecio   result [1] $self;
+  action AplicarDescuento result [1] $self;
+  action ReservarVehiculo result [1] $self;
+  action CancelarReserva  result [1] $self;
+  action VenderVehiculo   result [1] $self;
+
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare
+  {
+    validation validarDatosObligatorios;
+    validation validarMatricula;
+    validation validarBastidor;
+    validation validarAnioFabricacion;
+    validation validarKilometros;
+    validation validarPotencia;
+    validation validarPrecio;
+    validation validarCombustible;
+    validation validarEstadoModificacion;
+  }
+
+  mapping for ZAUTO_VEH_17 corresponding extensible
+  {
+    VehiculoUUID = VEHICULO_UUID;
+    Matricula = MATRICULA;
+    Bastidor = BASTIDOR;
+    Marca = MARCA;
+    Modelo = MODELO;
+    AnioFabricacion = ANIO_FABRICACION;
+    Kilometros = KILOMETROS;
+    Combustible = COMBUSTIBLE;
+    PotenciaCv = POTENCIA_CV;
+    Precio = PRECIO;
+    Moneda = MONEDA;
+    Estado = ESTADO;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}
